@@ -1,0 +1,34 @@
+These are the changes that are needed to the manifest to communicate with an USB Accessory.
+ 
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ...
+
+    ...
+
+    <uses-feature android:name="android.hardware.usb.accessory" />
+
+    ...
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+
+    <application ...
+        <activity ...
+            android:launchMode="singleInstance" >
+
+            ...
+            
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED" /> 
+            </intent-filter>
+            <meta-data android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED" android:resource="@xml/accessory_filter" />
+
+        </activity>
+
+    </application>
+
+</manifest>
+
+
+Also, copy the file in res/xml/* and change the strings to match the Accessory definition in the .ino file.

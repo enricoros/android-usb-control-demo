@@ -1,0 +1,10 @@
+In onCreate:
+
+  ControllerOutputUSB controllerOutputUSB = new ControllerOutputUSB(this); 
+  controllerOutputUSB.tryUseAccessoryFromIntent(getIntent());
+
+
+To send data to the Arduino board:
+
+  // sets channel 1 to 75% of the full range, channel 2 to 40% of the full range (range being -1 ... 1)
+  controllerOutputUSB.controlMotion(0.5, -0.2);
